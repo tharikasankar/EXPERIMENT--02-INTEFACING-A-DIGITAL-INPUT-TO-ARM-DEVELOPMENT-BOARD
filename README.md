@@ -51,11 +51,48 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 
 ## STM 32 CUBE PROGRAM :
+```
+#include "main.h"
+#include "stdbool.h"
+bool pushbutton;
+
+void SystemColck_Config(void);
+static void MX_GPIO_Init(void);
+
+int main(void)
+{
+ HAL_Int();
+ SystemClock_Config();
+ MX_GPIO_Init();
+
+while (1)
+  {
+    pushbutton=HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_13);
+    if(pushbutton==0)
+    {
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+    	HAL_Delay(2000);
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+    	HAL_Delay(2000);
+    }
+    else
+    {
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+    	HAL_Delay(2000);
+    }
+  }
+```
+![image](https://github.com/tharikasankar/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/119475507/809cd4a4-b1ea-4c28-81d7-021f3384ddc8)
 
 
 
 ## Output  :
- 
+ ## Before:
+ ![before](https://github.com/tharikasankar/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/119475507/8f52c89c-f99c-4d57-be71-bc2c052e1c5b)
+ ## After:
+ ![after](https://github.com/tharikasankar/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/119475507/72c5136a-2162-4e4c-90a0-36abadb6080d)
+
+
  
  
  
